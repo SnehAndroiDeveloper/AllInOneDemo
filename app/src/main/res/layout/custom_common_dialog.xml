@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:maxWidth="@dimen/_600sdp"
+    app:cardBackgroundColor="@color/colorWhite"
+    app:cardCornerRadius="@dimen/elevation_dimen_2dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingTop="@dimen/dimen_15dp">
+
+        <TextView
+            android:id="@+id/tvTitle"
+            style="@style/StyleTvCommonTitle"
+            android:layout_width="match_parent"
+            android:layout_marginStart="@dimen/dimen_15dp"
+            android:layout_marginEnd="@dimen/dimen_15dp"
+            android:layout_marginBottom="@dimen/dimen_10dp" />
+
+        <TextView
+            android:id="@+id/tvMsg"
+            style="@style/StyleTvSubTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvTitle"
+            android:layout_marginStart="@dimen/dimen_15dp"
+            android:layout_marginEnd="@dimen/dimen_15dp"
+            android:maxLines="4"
+            android:textSize="@dimen/font_7sp" />
+
+        <android.support.design.button.MaterialButton
+            android:id="@+id/btnNegative"
+            style="@style/Widget.MaterialComponents.Button.TextButton.BtnTransCommon"
+            android:layout_below="@id/tvMsg"
+            android:layout_marginStart="@dimen/dimen_5dp"
+            android:layout_marginTop="@dimen/dimen_5dp"
+            android:layout_marginEnd="@dimen/dimen_5dp"
+            android:layout_marginBottom="@dimen/dimen_15dp"
+            android:layout_toStartOf="@+id/btnPositive" />
+
+        <android.support.design.button.MaterialButton
+            android:id="@+id/btnPositive"
+            style="@style/Widget.MaterialComponents.Button.BtnCommon"
+            android:layout_below="@id/tvMsg"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="@dimen/dimen_5dp"
+            android:layout_marginTop="@dimen/dimen_5dp"
+            android:layout_marginEnd="@dimen/dimen_15dp"
+            android:layout_marginBottom="@dimen/dimen_15dp" />
+    </RelativeLayout>
+</android.support.design.card.MaterialCardView>

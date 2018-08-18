@@ -1,0 +1,87 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+
+apply plugin: 'kotlin-kapt'
+
+apply plugin: 'io.fabric'
+
+def config = rootProject.ext
+android {
+    compileSdkVersion config.compileSdkVersion
+
+    defaultConfig {
+        applicationId "com.mydemoapp"
+        minSdkVersion config.minSdkVersion
+        targetSdkVersion config.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+
+        lintOptions {
+            // In general we want to check for problems. Any time, all the time.
+            checkReleaseBuilds false
+            // And fail the build if we have errors
+            abortOnError false
+
+            // Level depends on the type AccountModel the job
+            /// Fail the build if buildGreenhouseRelease target is called and we have missing translations!
+            project.ext.isRelease ? error("MissingTranslation") : warning("MissingTranslation")
+            // Error level things
+            /// Hardcoded text should not exist or should have case by case exceptions
+            error "HardcodedText"
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$config.kotlinVersion"
+
+//    Firebase
+    implementation "com.google.firebase:firebase-core:$config.firebaseVersion"
+    implementation "com.crashlytics.sdk.android:crashlytics:$config.crashVersion"
+
+//    Support
+    implementation "com.android.support:support-v4:$config.supportLibraryVersion"
+    implementation "com.android.support:design:$config.supportLibraryVersion"
+    implementation "com.android.support:appcompat-v7:$config.supportLibraryVersion"
+
+//    Dimension manage
+    implementation "com.intuit.sdp:sdp-android:$config.sdpVersion"
+    implementation "com.intuit.ssp:ssp-android:$config.sdpVersion"
+
+//    Networking
+    implementation "com.squareup.okhttp3:logging-interceptor:$config.okhttpVersion"
+    implementation "com.squareup.retrofit2:retrofit:$config.retrofitVersion"
+    implementation "com.squareup.retrofit2:converter-gson:$config.retrofitVersion"
+
+//    image Loading using glide
+    implementation "com.github.bumptech.glide:glide:$config.glideVersion"
+    kapt "com.github.bumptech.glide:compiler:$config.glideVersion"
+
+//    room database
+    implementation "android.arch.persistence.room:rxjava2:$config.roomVersion"
+    kapt "android.arch.persistence.room:compiler:$config.roomVersion"
+
+//    dependency injection
+    implementation "com.google.dagger:dagger:$config.dagger2Version"
+    kapt "com.google.dagger:dagger-compiler:$config.dagger2Version"
+    kapt "com.google.dagger:dagger-android-processor:$config.dagger2Version"
+    implementation "com.google.dagger:dagger-android-support:$config.dagger2Version"
+
+//    reactive
+    implementation "io.reactivex.rxjava2:rxjava:$config.rxjava2Version"
+    implementation "io.reactivex.rxjava2:rxandroid:$config.rxandroidVersion"
+
+    implementation 'com.facebook.stetho:stetho:1.5.0'
+}
+apply plugin: 'com.google.gms.google-services'

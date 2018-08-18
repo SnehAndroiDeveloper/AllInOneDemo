@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">MyDemoApp</string>
+
+    <!--Common Strings-->
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
+    <string name="delete">Delete</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="settings">SETTINGS</string>
+    <string name="please_wait">Please wait …</string>
+    <string name="no_data_to_display">No data to display…</string>
+
+    <!--Dialog Upload Image Starts-->
+    <string name="take_picture">Take Picture</string>
+    <string name="select_from_gallery">Select from Gallery</string>
+    <string name="close">close</string>
+    <string name="storage_permission_msg">Storage permission request</string>
+    <string name="permission_title">Allow permission</string>
+    <string name="enable_permission_title">Enable permission</string>
+    <string name="enable_permission_msg">Enable requested permission to use app features</string>
+    <string name="grant">GRANT</string>
+    <string name="enable">ENABLE</string>
+    <string name="deny">DENY</string>
+
+    <!--Alert Messages-->
+    <string name="alert_some_error">Something went wrong, try again</string>
+    <string name="alert_message_error">Something went wrong please try after sometime.</string>
+    <string name="alert_no_connection">No internet connection</string>
+</resources>
