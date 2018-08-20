@@ -33,6 +33,9 @@ class GifPresenter(
                         gif.itemId = i.id
                         gif.videoURL = i.images.original.mp4
 
+                        gif.upCount = MyDemoApp.getDatabase().getVotesDao().getUpCount(i.id)
+                        gif.downCount = MyDemoApp.getDatabase().getVotesDao().getDownCount(i.id)
+
                         arrGif.add(gif)
                     }
 

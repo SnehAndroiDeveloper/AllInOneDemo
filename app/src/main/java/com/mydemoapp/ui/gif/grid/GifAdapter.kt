@@ -59,6 +59,8 @@ class GifAdapter : RecyclerView.Adapter<GifAdapter.GifHolder>() {
             val dislikeCount = 0
             view.tvLikesCount.text = view.context.resources.getQuantityString(R.plurals.likes, likeCount, likeCount)
             view.tvDislikeCount.text = view.context.resources.getQuantityString(R.plurals.dislikes, dislikeCount, dislikeCount)
+
+            view.ivLike.setOnClickListener { }
         }
 
     }
