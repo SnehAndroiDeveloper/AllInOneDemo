@@ -15,11 +15,11 @@ class GifPresenter(
 ) {
     var arrGifDataModel: ArrayList<GifDataModel> = ArrayList()
 
-    private fun gifList(): Subscription {
+    private fun gifList(text: String): Subscription {
         return model.isNetworkAvailable.doOnNext { networkAvailable ->
             if (!networkAvailable) {
             }
-        }.flatMap { model.provideListGifs() }
+        }.flatMap { model.provideListGifs(text) }
                 .subscribeOn(rxSchedulers.internet())
                 .observeOn(rxSchedulers.androidThread())
                 .subscribe({ heroes ->
@@ -34,9 +34,11 @@ class GifPresenter(
                 )
     }
 
-    fun onCreate() {
-        subscriptions.add(gifList())
-        subscriptions.add(respondToClick())
+    fun searchClick(text: String) {
+        if (!text.isEmpty()) {
+            subscriptions.add(gifList(text))
+            subscriptions.add(respondToClick())
+        }
     }
 
     fun onDestroy() {
@@ -44,6 +46,6 @@ class GifPresenter(
     }
 
     private fun respondToClick(): Subscription {
-        return view.itemClicks().subscribe { integer: Int -> model.gotoVideoActivity(arrGifDataModel[integer]) }
+        return view.itemClicks().subscribe { position: Int -> model.gotoVideoActivity(position, arrGifDataModel) }
     }
 }

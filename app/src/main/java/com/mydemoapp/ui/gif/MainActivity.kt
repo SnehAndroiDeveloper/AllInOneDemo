@@ -10,6 +10,7 @@ import com.mydemoapp.ui.gif.core.GifView
 import com.mydemoapp.ui.gif.dagger.DaggerGifComponent
 import com.mydemoapp.ui.gif.dagger.GifModule
 import com.mydemoapp.ui.video.VideoActivity
+import kotlinx.android.synthetic.main.activity_main.view.*
 import javax.inject.Inject
 
 class MainActivity : AppCompatActivity() {
@@ -24,8 +25,8 @@ class MainActivity : AppCompatActivity() {
 
         DaggerGifComponent.builder().appComponent(MyDemoApp.getNetComponent()).gifModule(GifModule(this)).build().inject(this)
         setContentView(view.view())
-        presenter.onCreate()
 
+        view.view().ivSearch.setOnClickListener { presenter.searchClick(view.view().tetSearch.text.toString()) }
     }
 
     override fun onDestroy() {
@@ -33,10 +34,10 @@ class MainActivity : AppCompatActivity() {
         presenter.onDestroy()
     }
 
-    fun goToVideoActivity(gifDataModel: GifDataModel) {
+    fun goToVideoActivity(position: Int, arrGifDataModel: ArrayList<GifDataModel>) {
+//        TODO:
         val intent = Intent(this, VideoActivity::class.java)
         startActivity(intent)
-
     }
 
 }

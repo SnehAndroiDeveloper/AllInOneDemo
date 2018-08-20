@@ -32,10 +32,10 @@ class GifAdapter : RecyclerView.Adapter<GifAdapter.GifHolder>() {
     }
 
     override fun getItemCount(): Int {
-        if (arrGifDataModel.size > 0) {
-            return arrGifDataModel.size
+        return if (arrGifDataModel.size > 0) {
+            arrGifDataModel.size
         } else {
-            return 0
+            0
         }
     }
 
@@ -55,6 +55,10 @@ class GifAdapter : RecyclerView.Adapter<GifAdapter.GifHolder>() {
 
         fun bind(gifDataModel: GifDataModel) {
             GlideApp.with(view.context).asGif().load(gifDataModel.images.previewGif.url).into(itemView.ivGif)
+            val likeCount = 0
+            val dislikeCount = 0
+            view.tvLikesCount.text = view.context.resources.getQuantityString(R.plurals.likes, likeCount, likeCount)
+            view.tvDislikeCount.text = view.context.resources.getQuantityString(R.plurals.dislikes, dislikeCount, dislikeCount)
         }
 
     }

@@ -36,6 +36,8 @@
             android:id="@+id/ivSearch"
             android:layout_width="@dimen/dimen_25dp"
             android:layout_height="@dimen/dimen_25dp"
+            android:layout_marginStart="@dimen/dimen_5dp"
+            android:background="@drawable/drawable_rounded_blue"
             android:contentDescription="@string/app_name"
             android:gravity="center"
             android:padding="@dimen/dimen_5dp"

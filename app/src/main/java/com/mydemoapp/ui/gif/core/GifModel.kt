@@ -13,10 +13,10 @@ class GifModel(private val context: MainActivity, private val api: GifApi) {
     val isNetworkAvailable: Observable<Boolean>
         get() = NetworkUtils.isNetworkAvailableObservable(context)
 
-    fun provideListGifs(): Observable<ResponseDataModel> {
+    fun provideListGifs(text: String): Observable<ResponseDataModel> {
         val requestParam = HashMap<String, String>()
         requestParam[WSConstant.PARAM_API_KEY] = WSConstant.VAL_API_KEY
-        requestParam[WSConstant.PARAM_Q] = "cat"
+        requestParam[WSConstant.PARAM_Q] = text
         requestParam[WSConstant.PARAM_LIMIT] = WSConstant.VAL_LIMIT.toString()
         requestParam[WSConstant.PARAM_OFFSET] = WSConstant.VAL_OFFSET.toString()
         requestParam[WSConstant.PARAM_RATING] = WSConstant.VAL_RATING
@@ -24,7 +24,7 @@ class GifModel(private val context: MainActivity, private val api: GifApi) {
         return api.getData(requestParam)
     }
 
-    fun gotoVideoActivity(gifDataModel: GifDataModel) {
-        context.goToVideoActivity(gifDataModel)
+    fun gotoVideoActivity(position: Int, arrGifDataModel: ArrayList<GifDataModel>) {
+        context.goToVideoActivity(position, arrGifDataModel)
     }
 }

@@ -34,12 +34,12 @@
     <plurals name="likes">
         <item quantity="zero">%d Likes</item>
         <item quantity="one">%dLike</item>
-        <item quantity="many">%d Likes</item>
+        <item quantity="other">%d Likes</item>
     </plurals>
 
     <plurals name="dislikes">
         <item quantity="zero">%d Dislikes</item>
         <item quantity="one">%d Dislike</item>
-        <item quantity="many">%d Dislikes</item>
+        <item quantity="other">%d Dislikes</item>
     </plurals>
 </resources>
