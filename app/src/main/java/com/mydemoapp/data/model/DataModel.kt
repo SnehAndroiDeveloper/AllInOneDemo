@@ -64,7 +64,9 @@ data class GifDataModel(
         val title: String = "",
         @SerializedName("_score")
         @Expose
-        val score: Double = 0.toDouble()
+        val score: Double = 0.toDouble(),
+        val likeCount: Int = 0,
+        val dislikeCount: Int = 0
 )
 
 data class PaginationDataModel(

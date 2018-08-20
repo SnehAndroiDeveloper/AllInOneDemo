@@ -1,10 +1,12 @@
 package com.mydemoapp
 
 import android.app.Application
+import android.arch.persistence.room.Room
 import android.content.pm.PackageManager
 import android.text.TextUtils
 import com.facebook.stetho.Stetho
 import com.mydemoapp.common.utils.Utils
+import com.mydemoapp.data.database.AppDatabase
 import com.mydemoapp.di.component.AppComponent
 import com.mydemoapp.di.component.DaggerAppComponent
 import com.mydemoapp.di.module.AppContextModule
@@ -15,6 +17,8 @@ class MyDemoApp : Application() {
     override fun onCreate() {
         super.onCreate()
         appComponent = DaggerAppComponent.builder().appContextModule(AppContextModule(this)).build()
+        database = Room.databaseBuilder(this, AppDatabase::class.java, "demo-db").allowMainThreadQueries().build()
+
         setCacheDirectory()
         Stetho.initializeWithDefaults(this)
     }
@@ -33,9 +37,14 @@ class MyDemoApp : Application() {
 
     companion object {
         private lateinit var appComponent: AppComponent
+        private lateinit var database: AppDatabase
 
         fun getNetComponent(): AppComponent {
             return appComponent
+        }
+
+        fun getDatabase(): AppDatabase {
+            return database
         }
     }
 }

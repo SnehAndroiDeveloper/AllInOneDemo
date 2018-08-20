@@ -13,7 +13,7 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:maxLines">1</item>
-        <item name="android:textSize">@dimen/font_9sp</item>
+        <item name="android:textSize">@dimen/font_14sp</item>
         <item name="android:textColor">@color/colorGray</item>
         <item name="android:ellipsize">end</item>
         <item name="android:fontFamily">@font/font_gotham_book</item>
@@ -46,7 +46,7 @@
 
     <!--Style for EditText Hint Property-->
     <style name="StyleEtHintCommon" parent="TextAppearance.Design.Hint">
-        <item name="android:textSize">@dimen/font_7sp</item>
+        <item name="android:textSize">@dimen/font_12sp</item>
         <item name="android:fontFamily">@font/font_gotham_book</item>
     </style>
 
@@ -76,7 +76,7 @@
         <item name="android:fontFamily">@font/font_gotham_book</item>
         <item name="android:maxLines">1</item>
         <item name="android:textColor">@color/colorBlueGrey</item>
-        <item name="android:textSize">@dimen/font_7sp</item>
+        <item name="android:textSize">@dimen/font_12sp</item>
     </style>
 
     <!--Style for Horizontal View-->

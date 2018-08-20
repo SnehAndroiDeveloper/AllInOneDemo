@@ -1,7 +1,7 @@
 package com.mydemoapp.ui.gif.core
 
 import com.mydemoapp.common.utils.NetworkUtils
-import com.mydemoapp.data.model.GifDataModel
+import com.mydemoapp.data.database.repository.gif.Gif
 import com.mydemoapp.data.model.ResponseDataModel
 import com.mydemoapp.network.GifApi
 import com.mydemoapp.network.WSConstant
@@ -24,7 +24,7 @@ class GifModel(private val context: MainActivity, private val api: GifApi) {
         return api.getData(requestParam)
     }
 
-    fun gotoVideoActivity(position: Int, arrGifDataModel: ArrayList<GifDataModel>) {
+    fun gotoVideoActivity(position: Int, arrGifDataModel: ArrayList<Gif>) {
         context.goToVideoActivity(position, arrGifDataModel)
     }
 }

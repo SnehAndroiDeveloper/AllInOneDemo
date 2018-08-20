@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
 import com.mydemoapp.R
+import com.mydemoapp.data.database.repository.gif.Gif
 import com.mydemoapp.data.model.GifDataModel
 import com.mydemoapp.ui.gif.MainActivity
 import com.mydemoapp.ui.gif.grid.GifAdapter
@@ -40,7 +41,7 @@ class GifView(context: MainActivity) {
         return view
     }
 
-    fun swapAdapter(arrGifData: ArrayList<GifDataModel>) {
-        adapter.swapAdapter(arrGifData)
+    fun swapAdapter(arrGif: ArrayList<Gif>) {
+        adapter.swapAdapter(arrGif)
     }
 }

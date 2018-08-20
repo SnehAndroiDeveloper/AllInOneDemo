@@ -4,7 +4,7 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.content.Intent
 import com.mydemoapp.MyDemoApp
-import com.mydemoapp.data.model.GifDataModel
+import com.mydemoapp.data.database.repository.gif.Gif
 import com.mydemoapp.ui.gif.core.GifPresenter
 import com.mydemoapp.ui.gif.core.GifView
 import com.mydemoapp.ui.gif.dagger.DaggerGifComponent
@@ -24,9 +24,12 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         DaggerGifComponent.builder().appComponent(MyDemoApp.getNetComponent()).gifModule(GifModule(this)).build().inject(this)
+
         setContentView(view.view())
 
         view.view().ivSearch.setOnClickListener { presenter.searchClick(view.view().tetSearch.text.toString()) }
+
+        presenter.onCreate()
     }
 
     override fun onDestroy() {
@@ -34,7 +37,7 @@ class MainActivity : AppCompatActivity() {
         presenter.onDestroy()
     }
 
-    fun goToVideoActivity(position: Int, arrGifDataModel: ArrayList<GifDataModel>) {
+    fun goToVideoActivity(position: Int, arrGifDataModel: ArrayList<Gif>) {
 //        TODO:
         val intent = Intent(this, VideoActivity::class.java)
         startActivity(intent)

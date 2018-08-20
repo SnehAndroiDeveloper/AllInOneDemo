@@ -5,21 +5,21 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.mydemoapp.R
-import com.mydemoapp.data.model.GifDataModel
 import rx.Observable
 import rx.subjects.PublishSubject
 import android.support.v7.widget.RecyclerView.ViewHolder
 import com.mydemoapp.common.utils.imageloader.GlideApp
+import com.mydemoapp.data.database.repository.gif.Gif
 import kotlinx.android.synthetic.main.row_gif_grid.view.*
 
 
 class GifAdapter : RecyclerView.Adapter<GifAdapter.GifHolder>() {
     private val itemClicks = PublishSubject.create<Int>()
-    var arrGifDataModel: ArrayList<GifDataModel> = ArrayList()
+    var arrGif: ArrayList<Gif> = ArrayList()
 
-    fun swapAdapter(heroes: ArrayList<GifDataModel>) {
-        this.arrGifDataModel.clear()
-        this.arrGifDataModel.addAll(heroes)
+    fun swapAdapter(heroes: ArrayList<Gif>) {
+        this.arrGif.clear()
+        this.arrGif.addAll(heroes)
         notifyDataSetChanged()
     }
 
@@ -32,8 +32,8 @@ class GifAdapter : RecyclerView.Adapter<GifAdapter.GifHolder>() {
     }
 
     override fun getItemCount(): Int {
-        return if (arrGifDataModel.size > 0) {
-            arrGifDataModel.size
+        return if (arrGif.size > 0) {
+            arrGif.size
         } else {
             0
         }
@@ -44,7 +44,7 @@ class GifAdapter : RecyclerView.Adapter<GifAdapter.GifHolder>() {
     }
 
     private fun setDataForGifHolder(gifHolder: GifHolder) {
-        val gifDataModel = arrGifDataModel[gifHolder.adapterPosition]
+        val gifDataModel = arrGif[gifHolder.adapterPosition]
         gifHolder.bind(gifDataModel)
     }
 
@@ -53,8 +53,8 @@ class GifAdapter : RecyclerView.Adapter<GifAdapter.GifHolder>() {
             view.setOnClickListener { clickSubject.onNext(adapterPosition) }
         }
 
-        fun bind(gifDataModel: GifDataModel) {
-            GlideApp.with(view.context).asGif().load(gifDataModel.images.previewGif.url).into(itemView.ivGif)
+        fun bind(gifDataModel: Gif) {
+            GlideApp.with(view.context).asGif().load(gifDataModel.gifURL).into(itemView.ivGif)
             val likeCount = 0
             val dislikeCount = 0
             view.tvLikesCount.text = view.context.resources.getQuantityString(R.plurals.likes, likeCount, likeCount)
