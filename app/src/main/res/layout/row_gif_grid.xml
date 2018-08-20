@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_margin="@dimen/dimen_10dp"
     android:orientation="vertical"
     android:translationZ="@dimen/elevation_dimen_2dp"
     app:cardCornerRadius="@dimen/dimen_2dp"
@@ -13,7 +14,6 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/dimen_10dp"
         android:orientation="vertical">
 
         <ImageView
@@ -27,9 +27,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:padding="@dimen/dimen_3dp"
-            android:baselineAligned="false">
+            android:baselineAligned="false"
+            android:orientation="horizontal">
 
             <LinearLayout
                 android:layout_width="0dp"
@@ -40,18 +39,25 @@
 
                 <ImageView
                     android:id="@+id/ivLike"
-                    android:layout_width="@dimen/dimen_15dp"
-                    android:layout_height="@dimen/dimen_15dp"
+                    android:layout_width="@dimen/dimen_25dp"
+                    android:layout_height="@dimen/dimen_25dp"
+                    android:layout_margin="@dimen/dimen_5dp"
                     android:contentDescription="@string/app_name"
-                    android:padding="@dimen/dimen_5dp"/>
+                    android:padding="@dimen/dimen_5dp"
+                    android:src="@drawable/ic_like" />
 
                 <TextView
                     android:id="@+id/tvLikesCount"
                     style="@style/StyleTvCommonSmallTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="0 likes" />
+                    android:layout_margin="@dimen/dimen_5dp" />
             </LinearLayout>
+
+            <View
+                android:layout_width="@dimen/elevation_dimen_2dp"
+                android:layout_height="match_parent"
+                android:background="@color/colorAccent" />
 
             <LinearLayout
                 android:layout_width="0dp"
@@ -62,17 +68,19 @@
 
                 <ImageView
                     android:id="@+id/ivUnlike"
-                    android:layout_width="@dimen/dimen_15dp"
-                    android:layout_height="@dimen/dimen_15dp"
+                    android:layout_width="@dimen/dimen_25dp"
+                    android:layout_height="@dimen/dimen_25dp"
+                    android:layout_margin="@dimen/dimen_5dp"
                     android:contentDescription="@string/app_name"
-                    android:padding="@dimen/dimen_5dp"/>
+                    android:padding="@dimen/dimen_5dp"
+                    android:src="@drawable/ic_unlike" />
 
                 <TextView
                     android:id="@+id/tvUnlikeCount"
                     style="@style/StyleTvCommonSmallTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="0 Unlikes" />
+                    android:layout_margin="@dimen/dimen_5dp" />
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>

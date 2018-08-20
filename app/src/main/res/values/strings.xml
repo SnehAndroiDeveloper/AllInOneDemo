@@ -27,5 +27,19 @@
     <string name="alert_some_error">Something went wrong, try again</string>
     <string name="alert_message_error">Something went wrong please try after sometime.</string>
     <string name="alert_no_connection">No internet connection</string>
+
+    <!--Main Activity Strings-->
     <string name="search">Search</string>
+
+    <plurals name="likes">
+        <item quantity="zero">%d Likes</item>
+        <item quantity="one">%dLike</item>
+        <item quantity="many">%d Likes</item>
+    </plurals>
+
+    <plurals name="dislikes">
+        <item quantity="zero">%d Dislikes</item>
+        <item quantity="one">%d Dislike</item>
+        <item quantity="many">%d Dislikes</item>
+    </plurals>
 </resources>

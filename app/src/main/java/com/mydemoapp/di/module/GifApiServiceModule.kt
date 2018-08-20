@@ -15,7 +15,7 @@ import dagger.Provides
 class GifApiServiceModule {
     @AppScope
     @Provides
-    internal fun provideApiService(client: OkHttpClient, gson: GsonConverterFactory, rxAdapter: RxJavaCallAdapterFactory): GifApi {
+    fun provideApiService(client: OkHttpClient, gson: GsonConverterFactory, rxAdapter: RxJavaCallAdapterFactory): GifApi {
         val retrofit = Retrofit.Builder().client(client)
                 .baseUrl(WSConstant.WS_BASE_URL).addConverterFactory(gson).addCallAdapterFactory(rxAdapter).build()
 

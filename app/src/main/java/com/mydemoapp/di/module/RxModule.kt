@@ -9,7 +9,7 @@ import dagger.Provides
 @Module
 class RxModule {
     @Provides
-    internal fun provideRxSchedulers(): RxScheduler {
+    fun provideRxSchedulers(): RxScheduler {
         return AppRxSchedulers()
     }
 }

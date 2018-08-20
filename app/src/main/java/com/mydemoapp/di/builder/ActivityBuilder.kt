@@ -1,8 +1,6 @@
 package com.mydemoapp.di.builder
 
-import com.mydemoapp.MainActivity
 import dagger.Module
-import dagger.android.ContributesAndroidInjector
 
 @Module
 abstract class ActivityBuilder {

@@ -18,7 +18,7 @@ class NetworkModule {
 
     @AppScope
     @Provides
-    internal fun provideHttpClient(logger: HttpLoggingInterceptor, cache: Cache): OkHttpClient {
+    fun provideHttpClient(logger: HttpLoggingInterceptor, cache: Cache): OkHttpClient {
 
         val builder = OkHttpClient().newBuilder()
         builder.addInterceptor(logger)
@@ -28,7 +28,7 @@ class NetworkModule {
 
     @AppScope
     @Provides
-    internal fun provideInterceptor(): HttpLoggingInterceptor {
+    fun provideInterceptor(): HttpLoggingInterceptor {
         val httpLoggingInterceptor = HttpLoggingInterceptor()
         httpLoggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
         return httpLoggingInterceptor
@@ -36,25 +36,25 @@ class NetworkModule {
 
     @AppScope
     @Provides
-    internal fun provideCache(file: File): Cache {
+    fun provideCache(file: File): Cache {
         return Cache(file, 10 * 10 * 1000)
     }
 
     @AppScope
     @Provides
-    internal fun provideCacheFile(context: Context): File {
+    fun provideCacheFile(context: Context): File {
         return context.getFilesDir()
     }
 
     @AppScope
     @Provides
-    internal fun provideRxAdapter(): RxJavaCallAdapterFactory {
+    fun provideRxAdapter(): RxJavaCallAdapterFactory {
         return RxJavaCallAdapterFactory.createWithScheduler(AppRxSchedulers.INTERNET_SCHEDULERS)
     }
 
 
     @Provides
-    internal fun provideGsonClient(): GsonConverterFactory {
+    fun provideGsonClient(): GsonConverterFactory {
         return GsonConverterFactory.create()
     }
 

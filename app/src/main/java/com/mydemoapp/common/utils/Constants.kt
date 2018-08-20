@@ -2,7 +2,7 @@ package com.mydemoapp.common.utils
 
 object Constants {
 
-    internal val APP_DB_NAME = "myDemoAppDatabase.db"
+    val APP_DB_NAME = "myDemoAppDatabase.db"
 
     const val MAX_CLICK_INTERVAL: Long = 800
 

@@ -3,7 +3,7 @@ package com.mydemoapp.data.database.repository.votes
 import io.reactivex.Observable
 import javax.inject.Inject
 
-class VotesRepository @Inject internal constructor(private val votesDao: VotesDao) : VotesRepo {
+class VotesRepository @Inject constructor(private val votesDao: VotesDao) : VotesRepo {
 
     override fun isVotesRepoEmpty(): Observable<Boolean> = Observable.fromCallable { votesDao.loadAllVotes().isEmpty() }
 

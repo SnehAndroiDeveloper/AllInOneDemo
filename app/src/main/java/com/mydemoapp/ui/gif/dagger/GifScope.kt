@@ -1,8 +1,8 @@
-package com.mydemoapp.di.qualifier
+package com.mydemoapp.ui.gif.dagger
 
 import java.lang.annotation.RetentionPolicy
 import javax.inject.Scope
 
 @Scope
 @Retention(AnnotationRetention.RUNTIME)
-annotation class AppScope
+annotation class GifScope
