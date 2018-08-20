@@ -1,27 +1,18 @@
 package com.mydemoapp.di.component
 
-import android.app.Application
-import com.mydemoapp.MyDemoApp
-import com.mydemoapp.di.builder.ActivityBuilder
-import com.mydemoapp.di.module.AppModule
-import dagger.BindsInstance
+import com.mydemoapp.di.module.AppContextModule
+import com.mydemoapp.di.module.GifApiServiceModule
+import com.mydemoapp.di.module.NetworkModule
+import com.mydemoapp.di.module.RxModule
+import com.mydemoapp.di.qualifier.AppScope
+import com.mydemoapp.network.GifApi
+import com.mydemoapp.network.RxScheduler
 import dagger.Component
-import dagger.android.AndroidInjectionModule
-import javax.inject.Singleton
 
-@Singleton
-@Component(modules = [(AndroidInjectionModule::class), (AppModule::class), (ActivityBuilder::class)])
+
+@AppScope
+@Component(modules = [(NetworkModule::class), (AppContextModule::class), (RxModule::class), (GifApiServiceModule::class)])
 interface AppComponent {
-
-    @Component.Builder
-    interface Builder {
-
-        @BindsInstance
-        fun application(application: Application): Builder
-
-        fun build(): AppComponent
-    }
-
-    fun inject(app: MyDemoApp)
-
+    fun rxSchedulers(): RxScheduler
+    fun apiService(): GifApi
 }

@@ -1,28 +1,20 @@
 package com.mydemoapp
 
-import android.app.Activity
 import android.app.Application
 import android.content.pm.PackageManager
 import android.text.TextUtils
 import com.facebook.stetho.Stetho
 import com.mydemoapp.common.utils.Utils
 import com.mydemoapp.di.component.AppComponent
-import dagger.android.DispatchingAndroidInjector
-import dagger.android.HasActivityInjector
+import com.mydemoapp.di.component.DaggerAppComponent
+import com.mydemoapp.di.module.AppContextModule
 import java.io.File
-import javax.inject.Inject
 
-class MyDemoApp : Application(), HasActivityInjector {
-    @Inject
-    internal lateinit var activityDispatchingAndroidInjector: DispatchingAndroidInjector<Activity>
 
+class MyDemoApp : Application() {
     override fun onCreate() {
         super.onCreate()
-        DaggerAppComponent.builder()
-                .application(this)
-                .build()
-                .inject(this)
-
+        appComponent = DaggerAppComponent.builder().appContextModule(AppContextModule(this)).build()
         setCacheDirectory()
         Stetho.initializeWithDefaults(this)
     }
@@ -39,5 +31,11 @@ class MyDemoApp : Application(), HasActivityInjector {
         }
     }
 
-    override fun activityInjector() = activityDispatchingAndroidInjector
+    companion object {
+        private lateinit var appComponent: AppComponent
+
+        fun getNetComponent(): AppComponent {
+            return appComponent
+        }
+    }
 }

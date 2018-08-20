@@ -28,7 +28,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:padding="@dimen/dimen_3dp">
+            android:padding="@dimen/dimen_3dp"
+            android:baselineAligned="false">
 
             <LinearLayout
                 android:layout_width="0dp"
@@ -42,8 +43,7 @@
                     android:layout_width="@dimen/dimen_15dp"
                     android:layout_height="@dimen/dimen_15dp"
                     android:contentDescription="@string/app_name"
-                    android:padding="@dimen/dimen_5dp"
-                    android:src="drawable/ic_like" />
+                    android:padding="@dimen/dimen_5dp"/>
 
                 <TextView
                     android:id="@+id/tvLikesCount"
@@ -65,8 +65,7 @@
                     android:layout_width="@dimen/dimen_15dp"
                     android:layout_height="@dimen/dimen_15dp"
                     android:contentDescription="@string/app_name"
-                    android:padding="@dimen/dimen_5dp"
-                    android:src="@drawable/ic_unlike" />
+                    android:padding="@dimen/dimen_5dp"/>
 
                 <TextView
                     android:id="@+id/tvUnlikeCount"

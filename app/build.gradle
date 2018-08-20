@@ -40,6 +40,10 @@ android {
             error "HardcodedText"
         }
     }
+
+    packagingOptions {
+        exclude 'META-INF/rxjava.properties'
+    }
 }
 
 dependencies {
@@ -63,6 +67,7 @@ dependencies {
     implementation "com.squareup.okhttp3:logging-interceptor:$config.okhttpVersion"
     implementation "com.squareup.retrofit2:retrofit:$config.retrofitVersion"
     implementation "com.squareup.retrofit2:converter-gson:$config.retrofitVersion"
+    implementation "com.squareup.retrofit2:adapter-rxjava:$config.retrofitVersion"
 
 //    image Loading using glide
     implementation "com.github.bumptech.glide:glide:$config.glideVersion"
@@ -80,7 +85,7 @@ dependencies {
 
 //    reactive
     implementation "io.reactivex.rxjava2:rxjava:$config.rxjava2Version"
-    implementation "io.reactivex.rxjava2:rxandroid:$config.rxandroidVersion"
+    implementation "io.reactivex:rxandroid:$config.rxandroidVersion"
 
     implementation 'com.facebook.stetho:stetho:1.5.0'
 }

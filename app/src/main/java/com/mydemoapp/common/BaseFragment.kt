@@ -10,7 +10,7 @@ import com.mydemoapp.R
 import com.mydemoapp.MyDemoApp
 import com.mydemoapp.common.utils.*
 
-abstract class BaseFragment : Fragment(), View.OnClickListener, LoaderInterface {
+abstract class BaseFragment : Fragment(), View.OnClickListener {
     protected abstract fun defineLayoutResource(): Int
 
     protected abstract fun initializeComponent(view: View) //to initialize the fragment components
@@ -79,7 +79,7 @@ abstract class BaseFragment : Fragment(), View.OnClickListener, LoaderInterface 
     }
 
     override fun onClick(view: View) {
-        Utils.hideSoftKeyBoard(MyDemoApp.instance, view)
+//        Utils.hideSoftKeyBoard(MyDemoApp.instance, view)
         /*
          * Logic to Prevent the Launch of the Fragment Twice if User makes
          * the Tap(Click) very Fast.
@@ -88,13 +88,5 @@ abstract class BaseFragment : Fragment(), View.OnClickListener, LoaderInterface 
             return
         }
         lastClickedTime = SystemClock.elapsedRealtime()
-    }
-
-    override fun showError(message: String) {
-        context?.let { NetworkUtils.showApiError(it, message) }
-    }
-
-    override fun showNoInternet() {
-        DialogUtils.showSnackBar(activity, getString(R.string.alert_no_connection))
     }
 }

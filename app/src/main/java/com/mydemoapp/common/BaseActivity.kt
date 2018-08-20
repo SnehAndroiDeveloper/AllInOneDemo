@@ -83,7 +83,7 @@ abstract class BaseActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     override fun onClick(view: View) {
-        Utils.hideSoftKeyBoard(MyDemoApp.instance, view)
+//        Utils.hideSoftKeyBoard(MyDemoApp.instance, view)
         /*
          * Logic to Prevent the Launch of the Fragment Twice if User makes
          * the Tap(Click) very Fast.
