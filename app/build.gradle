@@ -87,6 +87,10 @@ dependencies {
     implementation "io.reactivex.rxjava2:rxjava:$config.rxjava2Version"
     implementation "io.reactivex:rxandroid:$config.rxandroidVersion"
 
+//    exoplayer
+    implementation "com.google.android.exoplayer:exoplayer:$config.exoPlayerVersion"
+
+//    stetho
     implementation 'com.facebook.stetho:stetho:1.5.0'
 }
 apply plugin: 'com.google.gms.google-services'

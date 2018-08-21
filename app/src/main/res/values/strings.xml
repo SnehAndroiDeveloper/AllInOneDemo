@@ -33,7 +33,7 @@
 
     <plurals name="likes">
         <item quantity="zero">%d Likes</item>
-        <item quantity="one">%dLike</item>
+        <item quantity="one">%d Like</item>
         <item quantity="other">%d Likes</item>
     </plurals>
 

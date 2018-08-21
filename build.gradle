@@ -46,6 +46,7 @@ allprojects {
         rxandroidVersion = "1.2.1"
         firebaseVersion = "16.0.1"
         crashVersion = "2.9.4"
+        exoPlayerVersion = "2.6.0"
         minSdkVersion = 21
         targetSdkVersion = 27
         compileSdkVersion = 28

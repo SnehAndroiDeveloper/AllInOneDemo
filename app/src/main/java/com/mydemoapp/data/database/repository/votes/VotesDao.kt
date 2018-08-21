@@ -15,4 +15,7 @@ interface VotesDao {
 
     @Query("SELECT down_vote FROM votes WHERE item_id =:itemId")
     fun getDownCount(itemId: String): Int
+
+    @Update()
+    fun update(votes: Votes)
 }

@@ -1,15 +1,12 @@
 package com.mydemoapp.ui.gif.core
 
 import android.support.v7.widget.GridLayoutManager
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
 import com.mydemoapp.R
 import com.mydemoapp.data.database.repository.gif.Gif
-import com.mydemoapp.data.model.GifDataModel
 import com.mydemoapp.ui.gif.MainActivity
 import com.mydemoapp.ui.gif.grid.GifAdapter
 import kotlinx.android.synthetic.main.activity_main.view.*
@@ -33,7 +30,7 @@ class GifView(context: MainActivity) {
         view.rvGrid.layoutManager = mLayoutManager
     }
 
-    fun itemClicks(): Observable<Int> {
+    fun itemClicks(): Observable<Pair<Int, Int>> {
         return adapter.observeClicks()
     }
 
@@ -43,5 +40,9 @@ class GifView(context: MainActivity) {
 
     fun swapAdapter(arrGif: ArrayList<Gif>) {
         adapter.swapAdapter(arrGif)
+    }
+
+    fun changeCount(gif: Gif, adapterPosition: Int) {
+        adapter.changeLikeCount(gif, adapterPosition)
     }
 }

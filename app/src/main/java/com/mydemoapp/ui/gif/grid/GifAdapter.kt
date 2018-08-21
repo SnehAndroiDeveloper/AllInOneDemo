@@ -14,16 +14,21 @@ import kotlinx.android.synthetic.main.row_gif_grid.view.*
 
 
 class GifAdapter : RecyclerView.Adapter<GifAdapter.GifHolder>() {
-    private val itemClicks = PublishSubject.create<Int>()
+    private val itemClicks = PublishSubject.create<Pair<Int, Int>>()
     var arrGif: ArrayList<Gif> = ArrayList()
 
-    fun swapAdapter(heroes: ArrayList<Gif>) {
+    fun swapAdapter(arrGifs: ArrayList<Gif>) {
         this.arrGif.clear()
-        this.arrGif.addAll(heroes)
+        this.arrGif.addAll(arrGifs)
         notifyDataSetChanged()
     }
 
-    fun observeClicks(): Observable<Int> {
+    fun changeLikeCount(gif: Gif, adapterPosition: Int) {
+        arrGif[adapterPosition] = gif
+        notifyItemChanged(adapterPosition)
+    }
+
+    fun observeClicks(): Observable<Pair<Int, Int>> {
         return itemClicks
     }
 
@@ -48,20 +53,19 @@ class GifAdapter : RecyclerView.Adapter<GifAdapter.GifHolder>() {
         gifHolder.bind(gifDataModel)
     }
 
-    class GifHolder(var view: View, clickSubject: PublishSubject<Int>) : ViewHolder(view) {
+    class GifHolder(var view: View, var clickSubject: PublishSubject<Pair<Int, Int>>) : ViewHolder(view) {
         init {
-            view.setOnClickListener { clickSubject.onNext(adapterPosition) }
+            view.setOnClickListener { clickSubject.onNext(Pair(adapterPosition, 0)) }
+
+            view.ivLike.setOnClickListener { clickSubject.onNext(Pair(adapterPosition, 1)) }
+
+            view.ivDislike.setOnClickListener { clickSubject.onNext(Pair(adapterPosition, 2)) }
         }
 
         fun bind(gifDataModel: Gif) {
             GlideApp.with(view.context).asGif().load(gifDataModel.gifURL).into(itemView.ivGif)
-            val likeCount = 0
-            val dislikeCount = 0
-            view.tvLikesCount.text = view.context.resources.getQuantityString(R.plurals.likes, likeCount, likeCount)
-            view.tvDislikeCount.text = view.context.resources.getQuantityString(R.plurals.dislikes, dislikeCount, dislikeCount)
-
-            view.ivLike.setOnClickListener { }
+            view.tvLikesCount.text = view.context.resources.getQuantityString(R.plurals.likes, gifDataModel.upCount, gifDataModel.upCount)
+            view.tvDislikeCount.text = view.context.resources.getQuantityString(R.plurals.dislikes, gifDataModel.downCount, gifDataModel.downCount)
         }
-
     }
 }
