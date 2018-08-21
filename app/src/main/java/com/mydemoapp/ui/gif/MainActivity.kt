@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.content.Intent
 import com.mydemoapp.MyDemoApp
+import com.mydemoapp.common.utils.Constants
 import com.mydemoapp.data.database.repository.gif.Gif
 import com.mydemoapp.ui.gif.core.GifPresenter
 import com.mydemoapp.ui.gif.core.GifView
@@ -38,9 +39,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun goToVideoActivity(position: Int, arrGifDataModel: ArrayList<Gif>) {
-//        TODO:
         val intent = Intent(this, VideoActivity::class.java)
+        intent.putParcelableArrayListExtra(Constants.INTENT_GIF_ARRAY, arrGifDataModel)
+        intent.putExtra(Constants.INTENT_POSITION, position)
         startActivity(intent)
     }
-
 }
